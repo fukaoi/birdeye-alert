@@ -13,6 +13,8 @@ async function runOnce() {
   for (const chain of CONFIG.chains) {
     try {
       const rows = await fetchTrending(chain);
+      // 1sec delay
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       const movers = filterMovers(rows).map((t) => ({ ...t, chain }));
       all.push(...movers);
     } catch (e: any) {
