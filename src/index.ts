@@ -38,6 +38,9 @@ async function runOnce() {
       `Liq:${fmtUsd(x.liquidityUSD)}  Vol24h:${fmtUsd(x.v24hUSD)}`,
   );
 
+  console.log("Top 10 movers:");
+  console.log(lines.join("\n"));
+
   const msg =
     `🚀 <b>Birdeye Trending Movers</b>\n` +
     `Filter: 24h ≥ ${CONFIG.filter.minPct24h}%, Liquidity ≥ ${fmtUsd(CONFIG.filter.minLiqUsd)}\n\n` +
@@ -46,13 +49,8 @@ async function runOnce() {
   // await sendTelegram(msg);
 }
 
-runOnce()
-  .then((data) => {
-    console.log("Run completed successfully.");
-    console.log(data);
-  })
-  .catch(async (e) => {
-    console.error(e.message);
-    // await sendTelegram(`❌ Fatal error: <code>${e.message}</code>`);
-    process.exit(1);
-  });
+runOnce().catch(async (e) => {
+  console.error(e.message);
+  // await sendTelegram(`❌ Fatal error: <code>${e.message}</code>`);
+  process.exit(1);
+});
