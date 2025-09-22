@@ -23,6 +23,7 @@ export async function fetchTrending(chain: string): Promise<TrendingToken[]> {
     },
   });
 
+  console.log(res);
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`Birdeye(${chain}) HTTP ${res.status}: ${text}`);

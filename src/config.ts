@@ -7,7 +7,7 @@ function toNumber(val: string | undefined, def: number) {
 
 export const CONFIG = {
   api: {
-    url: "https://public-api.birdeye.so/defi/token_trending",
+    url: "https://public-api.birdeye.so/defi/token_trending?",
     key: process.env.BIRDEYE_KEY ?? "",
     limit: toNumber(process.env.LIMIT, 50),
   },

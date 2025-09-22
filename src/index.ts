@@ -16,9 +16,9 @@ async function runOnce() {
       const movers = filterMovers(rows).map((t) => ({ ...t, chain }));
       all.push(...movers);
     } catch (e: any) {
-      await sendTelegram(
-        `⚠️ <b>${chain}</b> fetch error: <code>${e.message}</code>`,
-      );
+      // await sendTelegram(
+      //   `⚠️ <b>${chain}</b> fetch error: <code>${e.message}</code>`,
+      // );
     }
   }
 
@@ -41,7 +41,7 @@ async function runOnce() {
     `Filter: 24h ≥ ${CONFIG.filter.minPct24h}%, Liquidity ≥ ${fmtUsd(CONFIG.filter.minLiqUsd)}\n\n` +
     lines.join("\n");
 
-  await sendTelegram(msg);
+  // await sendTelegram(msg);
 }
 
 runOnce()
